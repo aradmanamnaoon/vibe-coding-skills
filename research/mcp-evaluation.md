@@ -22,4 +22,3 @@ The project does not install a large MCP bundle as a side effect of skill instal
 5. Codex CLI is absent from PATH, so Codex MCP configuration could not be validated end-to-end.
 
 The example configuration therefore documents a small optional profile rather than claiming every integration was installed and connected.
-

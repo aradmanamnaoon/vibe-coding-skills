@@ -1,0 +1,53 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ['3.10', '3.13']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Unit and fixture tests
+        env:
+          PYTHONPATH: src
+        run: python -m unittest discover -s tests -v
+      - name: Validate skill library
+        env:
+          PYTHONPATH: src
+        run: python -m vibe_skills validate
+      - name: Verify generated catalog
+        env:
+          PYTHONPATH: src
+        run: |
+          python -m vibe_skills catalog
+          git diff --exit-code -- catalog
+      - name: Verify generated release reports
+        run: |
+          python scripts/generate_release_reports.py
+          git diff --exit-code -- docs/validation-report.md docs/compatibility-matrix.md docs/benchmark-methodology.md docs/known-limitations.md
+      - name: Run deterministic helper benchmarks
+        run: python scripts/run_helper_benchmarks.py
+      - name: Repository lint
+        run: python scripts/lint_repository.py .
+      - name: Check documentation links
+        run: python scripts/check_docs.py .
+      - name: Compile Python sources
+        run: python -m compileall -q src scripts skills tests
+      - name: Scan repository for credential patterns
+        run: python skills/security/secret-leakage-detector/scripts/scan_secrets.py .
+

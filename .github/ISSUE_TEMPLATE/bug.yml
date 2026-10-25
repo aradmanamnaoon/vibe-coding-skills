@@ -1,0 +1,25 @@
+name: Bug report
+description: Report a repository, CLI, validator, installer, or helper defect
+title: "[bug] "
+labels: [bug]
+body:
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Give the smallest reproducible steps and expected/observed behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Python version, agent/client if relevant, and repository commit.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Logs or test evidence
+      description: Redact credentials and private data before posting.
+

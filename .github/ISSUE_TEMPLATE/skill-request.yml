@@ -1,0 +1,27 @@
+name: Skill request
+description: Propose a reusable workflow for a recurring AI-assisted development problem
+title: "[skill] "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What recurring failure or workflow problem should this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Provide traceable issues, research, or reproducible examples.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: How could the skill be validated?
+      description: Describe a fixture or observable completion test.
+    validations:
+      required: true
+

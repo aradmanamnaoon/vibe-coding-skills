@@ -18,4 +18,3 @@ The problems in the research corpus already have useful partial solutions. The l
 | Documentation drift | docs tests, executable examples, generated API docs | verify commands, paths, APIs, screenshots and claims against repository state | future external-service changes |
 
 The most valuable skills act as orchestration and evidence contracts: they state which tools to use, in what order, what evidence is sufficient, when to stop, and how to report uncertainty.
-

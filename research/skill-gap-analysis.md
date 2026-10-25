@@ -31,4 +31,3 @@
 - security scanners have false negatives;
 - architecture and UX contain domain judgments that cannot be fully automated;
 - cross-platform behavior ultimately needs target-platform execution.
-

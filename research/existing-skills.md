@@ -26,4 +26,3 @@ Generic actions such as "review code", "run a shell command", or "create a skill
 ## Reuse policy
 
 Third-party skills are referenced rather than vendored unless a later contribution includes a license review and required attribution. Original skills in this repository use the MIT license. External executable helpers are never downloaded or run as a hidden side effect of installing a skill.
-

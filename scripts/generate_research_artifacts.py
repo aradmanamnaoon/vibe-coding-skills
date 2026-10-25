@@ -198,6 +198,13 @@ SOURCES = {
         "kind": "public bug report",
         "notes": "Reports missing circuit breaker and repeated retries with corrupted history.",
     },
+    "ISSUE-CODEX-WINDOWS-REGRESSION": {
+        "title": "Codex Windows sandbox regression breaks hardlink/junction test workflow",
+        "url": "https://github.com/openai/codex/issues/50735",
+        "date": "2026-10-03",
+        "kind": "public bug report",
+        "notes": "Reports an existing automated workflow that previously worked failing inside the supported Windows sandbox while passing outside it.",
+    },
 }
 
 
@@ -487,6 +494,8 @@ def build_evidence() -> list[dict[str, str]]:
         ("P022", "ISSUE-AIDER-TESTS", "An Aider issue reports benchmark tests left disabled or skipped, undermining execution coverage.", "agent benchmark maintainers", "high", "concrete issue evidence", "test presence can be mistaken for test execution", "fail on skipped critical tests; inspect runner output", "test-quality-auditor", "separate test files from tests actually run", "open issue may reflect a transient benchmark bug", "fixture with skipped tests and expected executed-test count"),
         ("P047", "ISSUE-CLINE-CONTEXT", "A Cline issue reports session-not-found behavior, illustrating continuity failures across coding sessions.", "Cline users", "medium", "concrete issue evidence", "session state can disappear or become inaccessible", "repo-local handoff state", "project-context-recovery", "make progress recoverable from repository evidence", "product-specific bug and sparse public detail", "interrupt/resume fixture using only repository artifacts"),
         ("P007", "ISSUE-ROO-RETRY", "A Roo Code issue reports structural API errors retried indefinitely without a circuit breaker.", "Roo Code users", "high", "concrete issue evidence", "retries occur without classifying permanent vs transient failures", "retry budgets and error classification", "loop-breaker", "bound repeated failures and protect conversation history", "single issue report", "permanent-error fixture asserting bounded attempts"),
+        ("P009", "ISSUE-CODEX-WINDOWS-REGRESSION", "A Codex issue reports an existing automated workflow that previously worked failing in the Windows sandbox while the same tests pass outside the sandbox.", "Codex Windows users", "high", "concrete issue evidence", "environment or sandbox changes can regress previously working verification paths", "baseline tests, platform matrices, regression isolation", "regression-detector", "compare known-good behavior across the changed execution boundary", "single product-specific issue report", "baseline the workflow outside and inside the target sandbox and compare the failing invariant"),
+        ("P054", "ISSUE-CODEX-WINDOWS-REGRESSION", "The same Codex issue demonstrates a Windows-specific sandbox failure involving hardlinks and junctions despite success outside the sandbox.", "Windows developers using coding agents", "high", "concrete issue evidence", "filesystem and permission semantics differ by platform and sandbox", "cross-platform CI, path/filesystem compatibility checks", "cross-platform-readiness-auditor", "surface platform-specific filesystem and privilege assumptions before release", "single issue report and one Windows build", "exercise representative path, link, permission, newline, and shell fixtures on Windows and Linux CI"),
     ]
     for entry in external:
         add(*entry)

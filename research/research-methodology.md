@@ -14,7 +14,7 @@ The corpus combines:
 - public issue reports from coding-agent projects,
 - current Agent Skills and plugin documentation.
 
-The generated evidence table contains 115 traceable evidence items across 27 named sources. Evidence types include industry research, official documentation, official security guidance, public bug report, randomized field study, research paper, research update, security study, supply-chain study, survey.
+The generated evidence table contains 117 traceable evidence items across 28 named sources. Evidence types include industry research, official documentation, official security guidance, public bug report, randomized field study, research paper, research update, security study, supply-chain study, survey.
 
 Survey percentages are copied as reported and are never converted into defect rates. A high usage percentage means a workflow is common, not that the workflow fails at that rate. Public issue reports demonstrate concrete failure modes but do not establish prevalence.
 

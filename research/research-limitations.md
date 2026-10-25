@@ -1,6 +1,6 @@
 # Research limitations
 
-The current corpus contains 115 evidence items and 55 candidate problems. It is intentionally broad, but it is not a prevalence meta-analysis.
+The current corpus contains 117 evidence items and 55 candidate problems. It is intentionally broad, but it is not a prevalence meta-analysis.
 
 ## Main limitations
 

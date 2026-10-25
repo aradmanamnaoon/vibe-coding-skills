@@ -15,6 +15,8 @@ Verified on 2026-10-25 on the active Windows host.
 | Docker | 29.8.1 |
 | Codex CLI | Not found on PATH |
 | pytest | Not installed globally |
+| Playwright MCP package | `npx -y @playwright/mcp@latest --help` executed successfully |
+| MCP filesystem package | `@modelcontextprotocol/server-filesystem@2.0.1` resolved and launched far enough to validate its path argument; no client handshake is claimed |
 
 ## Project-local environment
 
@@ -34,4 +36,6 @@ $env:PYTHONPATH = "src"
 The managed /skills root exposed to this session currently contains one unrelated psylex directory. The host session provides the Chat On Steroids Core integration used for filesystem, terminal, plan, and worker operations.
 
 Codex CLI is unavailable on PATH, so its official skill-installer cannot be invoked from this host as currently configured. Any third-party skill or MCP installation will be documented separately with provenance and an observed connectivity status; unavailable credential-dependent integrations will remain optional.
+
+The authenticated GitHub Search API was exercised during research. Bulk collection observed 537 unique issue records before rate limiting interrupted three configured searches. The current collector retains metadata only in an ignored local checkpoint.
 

@@ -10,7 +10,7 @@ Generated from catalog/skills.json and the observed validation strategy on 2026-
 - Agent-driven behavioral tests: **0**
 - Skills without agent-level execution evidence: **42**
 
-The active Windows host did not expose Codex CLI, and the attempted parallel ChatGPT worker sessions failed to report back. Those environmental facts are recorded as limitations rather than being converted into inferred agent-test results.
+The active build environment did not expose a compatible deterministic agent harness for controlled skill-versus-control runs. That limitation is recorded rather than converted into inferred agent-test results.
 
 ## Per-skill status
 

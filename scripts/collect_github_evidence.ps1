@@ -112,6 +112,14 @@ $payload = [pscustomobject]@{
 }
 $payload | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $resolvedOutput -Encoding UTF8
 
+$sanitizer = Join-Path (Split-Path -Parent $PSScriptRoot) "scripts\\sanitize_research_archive.py"
+if (Test-Path -LiteralPath $sanitizer) {
+    & py -3.10 $sanitizer $resolvedOutput
+    if ($LASTEXITCODE -ne 0) {
+        throw "Research archive sanitizer failed."
+    }
+}
+
 Write-Output "Collected $($all.Count) search hits and $($deduped.Count) unique issues."
 Write-Output "Failed queries: $($failures.Count)"
 Write-Output $resolvedOutput

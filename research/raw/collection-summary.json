@@ -1,0 +1,7 @@
+{
+  "collection_date": "2026-10-25",
+  "failed_query_count": 3,
+  "full_issue_bodies_retained": false,
+  "note": "The authenticated GitHub Search API rate limit interrupted the configured query set. Current collector output is metadata-only and local-only.",
+  "unique_issue_records_observed": 537
+}

@@ -28,6 +28,21 @@ class ResearchSanitizerTests(unittest.TestCase):
         self.assertNotIn(fixture_value, sanitized)
         self.assertIn("<REDACTED_BY_RESEARCH_ARCHIVE>", sanitized)
 
+    def test_payload_removes_issue_bodies(self) -> None:
+        module = _load()
+        payload = {
+            "unique_issues": [
+                {
+                    "url": "https://example.test/1",
+                    "title": "Example",
+                    "body": "third-party prompt or configuration",
+                }
+            ]
+        }
+        sanitized = module.sanitize_payload(payload)
+        self.assertNotIn("body", sanitized["unique_issues"][0])
+        self.assertEqual(sanitized["unique_issues"][0]["title"], "Example")
+
 
 if __name__ == "__main__":
     unittest.main()

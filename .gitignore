@@ -15,4 +15,5 @@ Thumbs.db
 !.env.example
 .agents/skills/
 .vibe-skills-state.json
+research/raw/github-issues.local.json
 

@@ -657,6 +657,7 @@ The current corpus contains {len(evidence)} evidence items and {len(PROBLEMS)} c
 - AI coding tools change quickly. Findings from 2025 are retained only when the study design or failure pattern remains informative.
 - METR's early-2025 randomized study was deliberately narrow. The authors explicitly caution against generalizing its 19% slowdown result, and their 2026 update reports selection effects in newer measurements.
 - The automated GitHub issue collector hit the authenticated Search API rate limit on 2026-10-25 before completing all configured queries. Public issue pages already retrieved remain cited, and the repository records the collector so the corpus can be refreshed later without hiding this blocker.
+- The bulk issue search observed 537 unique issue records before the rate limit and recorded three failed search queries. Full third-party issue bodies are intentionally not retained in the current repository; the collector stores metadata only in an ignored local checkpoint.
 - Codex CLI is not installed on the active Windows PATH, so official Codex skill-installer behavior could not be tested locally in this session.
 - PyPI DNS resolution failed while fetching optional development tools. The project therefore keeps core validation dependency-free and does not claim those optional tools were installed.
 

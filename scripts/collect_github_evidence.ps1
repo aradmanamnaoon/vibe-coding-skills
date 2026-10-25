@@ -1,7 +1,7 @@
 param(
     [string]$Since = "2025-10-25",
     [int]$LimitPerQuery = 20,
-    [string]$OutputPath = "research/raw/github-issues.json"
+    [string]$OutputPath = "research/raw/github-issues.local.json"
 )
 
 $ErrorActionPreference = "Stop"
@@ -51,7 +51,7 @@ foreach ($search in $searches) {
         "--repo", $search.repo,
         "--created", ">=$Since",
         "--limit", "$LimitPerQuery",
-        "--json", "number,title,url,createdAt,updatedAt,state,body,labels"
+        "--json", "number,title,url,createdAt,updatedAt,state,labels"
     )
     $json = & gh @args
     if ($LASTEXITCODE -ne 0) {
@@ -76,7 +76,6 @@ foreach ($search in $searches) {
             created_at = $item.createdAt
             updated_at = $item.updatedAt
             state = $item.state
-            body = $item.body
             labels = @($item.labels | ForEach-Object { $_.name })
         })
     }
@@ -95,7 +94,6 @@ $deduped = $all |
             created_at = $first.created_at
             updated_at = $first.updated_at
             state = $first.state
-            body = $first.body
             labels = $first.labels
         }
     } |
@@ -112,7 +110,7 @@ $payload = [pscustomobject]@{
 }
 $payload | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $resolvedOutput -Encoding UTF8
 
-$sanitizer = Join-Path (Split-Path -Parent $PSScriptRoot) "scripts\\sanitize_research_archive.py"
+$sanitizer = Join-Path $PSScriptRoot "sanitize_research_archive.py"
 if (Test-Path -LiteralPath $sanitizer) {
     & py -3.10 $sanitizer $resolvedOutput
     if ($LASTEXITCODE -ne 0) {

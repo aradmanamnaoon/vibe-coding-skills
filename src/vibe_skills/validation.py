@@ -26,21 +26,33 @@ def validate_repository(skills_root: Path) -> list[ValidationIssue]:
     for record in records:
         manifest = record.path / "SKILL.md"
         text = manifest.read_text(encoding="utf-8")
-        required_phrases = [
-            "Purpose",
-            "When to activate",
-            "When not to activate",
-            "Preconditions",
-            "Required inputs",
-            "Workflow",
-            "Validation",
-            "Expected output",
-            "Failure handling",
-            "Completion criteria",
-        ]
-        for phrase in required_phrases:
-            if phrase.lower() not in text.lower():
-                issues.append(ValidationIssue(manifest, f"missing required section: {phrase}"))
+        headings = {
+            line.strip().casefold()
+            for line in text.splitlines()
+            if line.strip().startswith("#")
+        }
+        required_headings = {
+            "# purpose": "Purpose",
+            "# when to activate": "When to activate",
+            "# when not to activate": "When not to activate",
+            "# preconditions": "Preconditions",
+            "# required inputs": "Required inputs",
+            "# workflow": "Workflow",
+            "# relevant tools": "Relevant tools",
+            "# safety restrictions": "Safety restrictions",
+            "# validation": "Validation",
+            "# expected output": "Expected output",
+            "# failure handling": "Failure handling",
+            "# completion criteria": "Completion criteria",
+        }
+        for heading, label in required_headings.items():
+            if heading not in headings:
+                issues.append(
+                    ValidationIssue(
+                        manifest,
+                        f"missing required section: {label}",
+                    )
+                )
 
         for link in _LINK_RE.findall(text):
             if "://" in link or link.startswith("#") or link.startswith("mailto:"):

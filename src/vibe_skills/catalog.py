@@ -62,8 +62,12 @@ def load_skill(skill_file: Path, skills_root: Path) -> SkillRecord:
     description = metadata.get("description", "")
     if not _SLUG_RE.fullmatch(name):
         raise SkillFormatError(f"{skill_file}: invalid skill name '{name}'")
+    if len(name) > 64:
+        raise SkillFormatError(f"{skill_file}: skill name exceeds 64 characters")
     if len(description) < 24:
         raise SkillFormatError(f"{skill_file}: description is too short to be actionable")
+    if len(description) > 1024:
+        raise SkillFormatError(f"{skill_file}: description exceeds 1024 characters")
     if skill_file.parent.name != name:
         raise SkillFormatError(
             f"{skill_file}: directory '{skill_file.parent.name}' must match skill name '{name}'"
@@ -79,11 +83,18 @@ def discover_skills(skills_root: Path) -> list[SkillRecord]:
         return []
     records: list[SkillRecord] = []
     names: set[str] = set()
+    descriptions: dict[str, str] = {}
     for skill_file in sorted(skills_root.rglob("SKILL.md")):
         record = load_skill(skill_file, skills_root)
         if record.name in names:
             raise SkillFormatError(f"duplicate skill name: {record.name}")
+        normalized_description = " ".join(record.description.casefold().split())
+        if normalized_description in descriptions:
+            raise SkillFormatError(
+                f"duplicate skill description: {record.name} and {descriptions[normalized_description]}"
+            )
         names.add(record.name)
+        descriptions[normalized_description] = record.name
         records.append(record)
     return records
 

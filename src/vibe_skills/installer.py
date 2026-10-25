@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 from pathlib import Path
 import shutil
 
@@ -47,6 +48,18 @@ def _write_state(destination: Path, state: dict[str, dict[str, str]]) -> None:
     temp.replace(state_path)
 
 
+def _tree_digest(root: Path) -> str:
+    digest = hashlib.sha256()
+    for path in sorted(item for item in root.rglob("*") if item.is_file()):
+        relative = path.relative_to(root).as_posix().encode("utf-8")
+        digest.update(len(relative).to_bytes(8, "big"))
+        digest.update(relative)
+        data = path.read_bytes()
+        digest.update(len(data).to_bytes(8, "big"))
+        digest.update(data)
+    return digest.hexdigest()
+
+
 def install_skill(
     record: SkillRecord,
     destination: Path,
@@ -64,10 +77,66 @@ def install_skill(
 
     destination.mkdir(parents=True, exist_ok=True)
     shutil.copytree(record.path, target)
+    installed_digest = _tree_digest(target)
     state = _read_state(destination)
     state[record.name] = {
         "source": str(record.path.resolve()),
         "target": str(target),
+        "installed_digest": installed_digest,
+    }
+    _write_state(destination, state)
+    return target
+
+
+def update_skill(
+    record: SkillRecord,
+    destination: Path,
+    *,
+    dry_run: bool = False,
+) -> Path:
+    destination = destination.resolve()
+    target = _safe_child(destination, record.name)
+    state = _read_state(destination)
+    entry = state.get(record.name)
+    if entry is None or Path(entry.get("target", "")).resolve() != target:
+        raise InstallError(
+            f"refusing to update unmanaged skill '{record.name}'; install it with vibe-skills first"
+        )
+    if not target.exists():
+        raise InstallError(f"managed skill '{record.name}' is missing from {target}")
+
+    installed_digest = entry.get("installed_digest")
+    current_digest = _tree_digest(target)
+    if not installed_digest or current_digest != installed_digest:
+        raise InstallError(
+            f"refusing to overwrite locally modified skill '{record.name}' at {target}"
+        )
+    if dry_run:
+        return target
+
+    staging = _safe_child(destination, f".{record.name}.update")
+    if staging.exists():
+        raise InstallError(f"stale update staging path exists: {staging}")
+    shutil.copytree(record.path, staging)
+    new_digest = _tree_digest(staging)
+    backup = _safe_child(destination, f".{record.name}.backup")
+    if backup.exists():
+        raise InstallError(f"stale update backup path exists: {backup}")
+    try:
+        target.replace(backup)
+        staging.replace(target)
+        shutil.rmtree(backup)
+    except Exception:
+        if not target.exists() and backup.exists():
+            backup.replace(target)
+        if staging.exists():
+            shutil.rmtree(staging)
+        raise
+
+    state[record.name] = {
+        "source": str(record.path.resolve()),
+        "target": str(target),
+        "installed_digest": new_digest,
     }
     _write_state(destination, state)
     return target

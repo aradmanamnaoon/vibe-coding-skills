@@ -1,0 +1,380 @@
+[
+  {
+    "category": "agent-reliability",
+    "description": "Audit an agent's claim that work is complete by mapping each claim to observed repository, test, UI, API, or remote evidence. Use before saying done, shipped, fixed, pushed, or verified.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install completion-claims-auditor",
+    "name": "completion-claims-auditor",
+    "source": "skills/agent-reliability/completion-claims-auditor",
+    "structurally_valid": true
+  },
+  {
+    "category": "agent-reliability",
+    "description": "Establish a known-good baseline and protect unrelated working behavior before AI edits an established project. Use before risky fixes, refactors, or broad feature work.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install existing-work-preservation",
+    "name": "existing-work-preservation",
+    "source": "skills/agent-reliability/existing-work-preservation",
+    "structurally_valid": true
+  },
+  {
+    "category": "agent-reliability",
+    "description": "Audit MCP/plugin tool integrations for startup cost, health, retries, timeouts, process leaks, permission scope, and failure isolation. Use when agents stall, spawn processes, or load many MCP servers.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install mcp-reliability-auditor",
+    "name": "mcp-reliability-auditor",
+    "source": "skills/agent-reliability/mcp-reliability-auditor",
+    "structurally_valid": true
+  },
+  {
+    "category": "agent-reliability",
+    "description": "Integrate parallel agent changes by detecting file overlap, incompatible assumptions, duplicated implementations, semantic conflicts, and missing combined tests. Use before merging worker branches or worktrees.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install multi-agent-integration-reviewer",
+    "name": "multi-agent-integration-reviewer",
+    "source": "skills/agent-reliability/multi-agent-integration-reviewer",
+    "structurally_valid": true
+  },
+  {
+    "category": "agent-reliability",
+    "description": "Reconstruct an interrupted project's goals, current state, completed work, and next safe actions from repository evidence. Use after context loss, compaction, session changes, or handoff.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install project-context-recovery",
+    "name": "project-context-recovery",
+    "source": "skills/agent-reliability/project-context-recovery",
+    "structurally_valid": true
+  },
+  {
+    "category": "agent-reliability",
+    "description": "Map a large prompt, specification, or issue into stable requirements and verify each against implementation and evidence. Use for complex multi-requirement work or final audits.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install requirement-traceability-auditor",
+    "name": "requirement-traceability-auditor",
+    "source": "skills/agent-reliability/requirement-traceability-auditor",
+    "structurally_valid": true
+  },
+  {
+    "category": "agent-reliability",
+    "description": "Detect edits outside the requested change surface and require a dependency rationale for every additional file. Use during or after autonomous code changes.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install scope-drift-guard",
+    "name": "scope-drift-guard",
+    "source": "skills/agent-reliability/scope-drift-guard",
+    "structurally_valid": true
+  },
+  {
+    "category": "architecture",
+    "description": "Find modules whose coupling, size, responsibility mix, or change fan-out makes AI-assisted maintenance fragile. Use before major refactors or when files keep growing.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install architecture-complexity-auditor",
+    "name": "architecture-complexity-auditor",
+    "source": "skills/architecture/architecture-complexity-auditor",
+    "structurally_valid": true
+  },
+  {
+    "category": "architecture",
+    "description": "Detect direct and indirect module dependency cycles and choose the smallest safe boundary to break them. Use for circular imports, layering failures, or tangled module graphs.",
+    "has_scripts": true,
+    "install": "python -m vibe_skills install dependency-cycle-auditor",
+    "name": "dependency-cycle-auditor",
+    "source": "skills/architecture/dependency-cycle-auditor",
+    "structurally_valid": true
+  },
+  {
+    "category": "backend",
+    "description": "Review multi-step writes, retries, concurrency, and idempotency for lost updates, duplicates, partial state, and race conditions. Use for payments, jobs, counters, workflows, or shared records.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install data-consistency-auditor",
+    "name": "data-consistency-auditor",
+    "source": "skills/backend/data-consistency-auditor",
+    "structurally_valid": true
+  },
+  {
+    "category": "backend",
+    "description": "Review relational or document schemas for keys, relationships, constraints, nullability, indexes, and access-pattern fit. Use before schema creation or migration.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install database-schema-reviewer",
+    "name": "database-schema-reviewer",
+    "source": "skills/backend/database-schema-reviewer",
+    "structurally_valid": true
+  },
+  {
+    "category": "backend",
+    "description": "Audit database migrations for destructive changes, locking, backfill, rollback, and mixed-version rollout safety. Use before applying schema/data migrations.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install migration-safety-reviewer",
+    "name": "migration-safety-reviewer",
+    "source": "skills/backend/migration-safety-reviewer",
+    "structurally_valid": true
+  },
+  {
+    "category": "debugging",
+    "description": "Detect and stop no-progress debugging, retry, and tool-call loops while preserving repeated actions that make measurable progress. Use when the same action or error is recurring.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install loop-breaker",
+    "name": "loop-breaker",
+    "source": "skills/debugging/loop-breaker",
+    "structurally_valid": true
+  },
+  {
+    "category": "debugging",
+    "description": "Create the smallest reliable reproducer for a reported software failure before attempting a fix. Use when a bug is intermittent, environment-sensitive, or not covered by a failing test.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install reproduction-builder",
+    "name": "reproduction-builder",
+    "source": "skills/debugging/reproduction-builder",
+    "structurally_valid": true
+  },
+  {
+    "category": "debugging",
+    "description": "Diagnose recurring software failures from reproducible evidence, logs, failing tests, and causal hypotheses. Use when a bug fix is uncertain, repeated, or risks treating symptoms.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install root-cause-debugger",
+    "name": "root-cause-debugger",
+    "source": "skills/debugging/root-cause-debugger",
+    "structurally_valid": true
+  },
+  {
+    "category": "dependencies",
+    "description": "Verify proposed packages, versions, imports, and upgrade claims against project state and authoritative package metadata. Use before adding or changing a dependency.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install dependency-grounding-auditor",
+    "name": "dependency-grounding-auditor",
+    "source": "skills/dependencies/dependency-grounding-auditor",
+    "structurally_valid": true
+  },
+  {
+    "category": "deployment",
+    "description": "Diagnose failing CI jobs from the exact failing step, logs, environment, and reproducible local checks. Use when a pipeline fails or an agent proposes speculative workflow edits.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install ci-failure-investigator",
+    "name": "ci-failure-investigator",
+    "source": "skills/deployment/ci-failure-investigator",
+    "structurally_valid": true
+  },
+  {
+    "category": "deployment",
+    "description": "Find shell, path, case, newline, permission, encoding, and runtime assumptions that break on Windows, macOS, or Linux. Use for cross-platform projects or platform-specific failures.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install cross-platform-readiness-auditor",
+    "name": "cross-platform-readiness-auditor",
+    "source": "skills/deployment/cross-platform-readiness-auditor",
+    "structurally_valid": true
+  },
+  {
+    "category": "deployment",
+    "description": "Derive required configuration keys from code and manifests, detect missing/unused/misspelled variables, and verify fail-fast behavior. Use for environment-variable or deployment configuration changes.",
+    "has_scripts": true,
+    "install": "python -m vibe_skills install environment-config-auditor",
+    "name": "environment-config-auditor",
+    "source": "skills/deployment/environment-config-auditor",
+    "structurally_valid": true
+  },
+  {
+    "category": "deployment",
+    "description": "Compare local, CI, container, and production assumptions for runtime versions, dependencies, services, paths, and build/start commands. Use when software works locally but fails elsewhere.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install environment-parity-auditor",
+    "name": "environment-parity-auditor",
+    "source": "skills/deployment/environment-parity-auditor",
+    "structurally_valid": true
+  },
+  {
+    "category": "deployment",
+    "description": "Audit a service or application for deployability, health/readiness, logging, failure behavior, backup/recovery assumptions, and critical smoke checks. Use before a release or production handoff.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install production-readiness-auditor",
+    "name": "production-readiness-auditor",
+    "source": "skills/deployment/production-readiness-auditor",
+    "structurally_valid": true
+  },
+  {
+    "category": "documentation",
+    "description": "Verify README, setup, examples, commands, API docs, screenshots/claims, and paths against the current repository. Use after implementation or before release.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install documentation-accuracy-auditor",
+    "name": "documentation-accuracy-auditor",
+    "source": "skills/documentation/documentation-accuracy-auditor",
+    "structurally_valid": true
+  },
+  {
+    "category": "efficiency",
+    "description": "Reduce repeated context, research, tool calls, and overengineering while preserving verification quality. Use when an agent is rereading the same material or spending heavily on low-value exploration.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install token-efficient-workflow",
+    "name": "token-efficient-workflow",
+    "source": "skills/efficiency/token-efficient-workflow",
+    "structurally_valid": true
+  },
+  {
+    "category": "frontend",
+    "description": "Audit interactive UI for semantic structure, keyboard/focus behavior, accessible names, contrast, motion, and touch targets. Use for UI changes or accessibility review.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install accessibility-auditor",
+    "name": "accessibility-auditor",
+    "source": "skills/frontend/accessibility-auditor",
+    "structurally_valid": true
+  },
+  {
+    "category": "frontend",
+    "description": "Trace visible controls, routes, commands, and integrations to real handlers and observable effects to find placeholders or hardcoded demos. Use before declaring a product feature complete.",
+    "has_scripts": true,
+    "install": "python -m vibe_skills install dead-feature-detector",
+    "name": "dead-feature-detector",
+    "source": "skills/frontend/dead-feature-detector",
+    "structurally_valid": true
+  },
+  {
+    "category": "frontend",
+    "description": "Verify changed UI across representative viewport widths for overflow, clipping, reflow, navigation, touch targets, and content priority. Use for frontend layout changes.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install responsive-design-auditor",
+    "name": "responsive-design-auditor",
+    "source": "skills/frontend/responsive-design-auditor",
+    "structurally_valid": true
+  },
+  {
+    "category": "frontend",
+    "description": "Audit user flows for loading, empty, success, validation, partial, permission, offline, and error states. Use when async UI or data-driven workflows are added.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install ux-state-completeness-auditor",
+    "name": "ux-state-completeness-auditor",
+    "source": "skills/frontend/ux-state-completeness-auditor",
+    "structurally_valid": true
+  },
+  {
+    "category": "release",
+    "description": "Cross-check version metadata, changelog, tags, packaged artifacts, install/start behavior, and publication workflow before or after a release. Use for release preparation or audit.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install release-verification-agent",
+    "name": "release-verification-agent",
+    "source": "skills/release/release-verification-agent",
+    "structurally_valid": true
+  },
+  {
+    "category": "security",
+    "description": "Review tool-using agent workflows for prompt injection, untrusted-content authority confusion, excessive permissions, and unsafe action boundaries. Use when agents read external content and can mutate systems.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install agent-tool-trust-auditor",
+    "name": "agent-tool-trust-auditor",
+    "source": "skills/security/agent-tool-trust-auditor",
+    "structurally_valid": true
+  },
+  {
+    "category": "security",
+    "description": "Audit authentication flows for server-side identity verification, session/token handling, and bypass paths. Use when login, session, OAuth, API-key, or protected-route code changes.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install authentication-security-auditor",
+    "name": "authentication-security-auditor",
+    "source": "skills/security/authentication-security-auditor",
+    "structurally_valid": true
+  },
+  {
+    "category": "security",
+    "description": "Audit object, action, role, and tenant authorization boundaries after identity is established. Use for permissions, ownership, admin, organization, or multi-user features.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install authorization-boundary-auditor",
+    "name": "authorization-boundary-auditor",
+    "source": "skills/security/authorization-boundary-auditor",
+    "structurally_valid": true
+  },
+  {
+    "category": "security",
+    "description": "Review dependency additions and upgrades for known vulnerabilities, risky provenance, and unnecessary supply-chain exposure. Use for dependency changes or security audits.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install dependency-vulnerability-auditor",
+    "name": "dependency-vulnerability-auditor",
+    "source": "skills/security/dependency-vulnerability-auditor",
+    "structurally_valid": true
+  },
+  {
+    "category": "security",
+    "description": "Trace untrusted input into SQL, shell, template, path, and other interpreter sinks. Use for security review or changes involving dynamic queries/commands.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install injection-risk-auditor",
+    "name": "injection-risk-auditor",
+    "source": "skills/security/injection-risk-auditor",
+    "structurally_valid": true
+  },
+  {
+    "category": "security",
+    "description": "Audit server-side validation at trust boundaries for shape, type, range, format, size, and semantic constraints. Use for APIs, forms, uploads, imports, or external events.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install input-validation-auditor",
+    "name": "input-validation-auditor",
+    "source": "skills/security/input-validation-auditor",
+    "structurally_valid": true
+  },
+  {
+    "category": "security",
+    "description": "Detect likely credentials, private keys, tokens, and secret-bearing configuration before commit or publication. Use for security review, pre-push checks, or suspicious configuration changes.",
+    "has_scripts": true,
+    "install": "python -m vibe_skills install secret-leakage-detector",
+    "name": "secret-leakage-detector",
+    "source": "skills/security/secret-leakage-detector",
+    "structurally_valid": true
+  },
+  {
+    "category": "security",
+    "description": "Inspect runtime, web, container, and deployment configuration for unsafe production defaults. Use before release or when CORS, cookies, debug mode, network exposure, TLS, or headers change.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install security-misconfiguration-auditor",
+    "name": "security-misconfiguration-auditor",
+    "source": "skills/security/security-misconfiguration-auditor",
+    "structurally_valid": true
+  },
+  {
+    "category": "testing",
+    "description": "Compare API producers, consumers, schemas, types, status codes, and error shapes to detect contract drift. Use for client/server changes or API versioning.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install api-contract-auditor",
+    "name": "api-contract-auditor",
+    "source": "skills/testing/api-contract-auditor",
+    "structurally_valid": true
+  },
+  {
+    "category": "testing",
+    "description": "Identify critical integrations proven only by mocks and design the smallest realistic contract or sandbox verification. Use for APIs, databases, queues, storage, auth providers, or external services.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install integration-reality-checker",
+    "name": "integration-reality-checker",
+    "source": "skills/testing/integration-reality-checker",
+    "structurally_valid": true
+  },
+  {
+    "category": "testing",
+    "description": "Map changed or critical behavior to automated checks and identify meaningful untested paths. Use after feature work, bug fixes, or when coverage appears misleading.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install missing-test-detector",
+    "name": "missing-test-detector",
+    "source": "skills/testing/missing-test-detector",
+    "structurally_valid": true
+  },
+  {
+    "category": "testing",
+    "description": "Detect behavior regressions introduced by a change by comparing baselines, requirements, tests, and adjacent flows. Use after a fix, refactor, dependency change, or generated patch.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install regression-detector",
+    "name": "regression-detector",
+    "source": "skills/testing/regression-detector",
+    "structurally_valid": true
+  },
+  {
+    "category": "testing",
+    "description": "Detect skipped, vacuous, over-mocked, implementation-mirroring, and nondeterministic tests that create false confidence. Use when a suite is green but quality is uncertain.",
+    "has_scripts": true,
+    "install": "python -m vibe_skills install test-quality-auditor",
+    "name": "test-quality-auditor",
+    "source": "skills/testing/test-quality-auditor",
+    "structurally_valid": true
+  },
+  {
+    "category": "testing",
+    "description": "Verify real user flows in a browser across navigation, forms, async states, and errors. Use when a visible frontend feature is added or claimed complete.",
+    "has_scripts": false,
+    "install": "python -m vibe_skills install ui-flow-verifier",
+    "name": "ui-flow-verifier",
+    "source": "skills/testing/ui-flow-verifier",
+    "structurally_valid": true
+  }
+]

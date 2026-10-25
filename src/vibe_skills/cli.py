@@ -5,7 +5,8 @@ from pathlib import Path
 import sys
 
 from .catalog import SkillFormatError, discover_skills
-from .installer import InstallError, install_skill, remove_skill
+from .catalog_output import write_catalog
+from .installer import InstallError, install_skill, remove_skill, update_skill
 from .validation import validate_repository
 
 
@@ -75,6 +76,22 @@ def cmd_remove(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_update(args: argparse.Namespace) -> int:
+    destination = Path(args.destination)
+    selected = _records(args)
+    if args.name:
+        selected = [_find(args, args.name)]
+    elif args.category:
+        selected = [record for record in selected if record.category == args.category]
+    if not selected:
+        raise InstallError("no skills matched the requested selection")
+    for record in selected:
+        target = update_skill(record, destination, dry_run=args.dry_run)
+        prefix = "Would update" if args.dry_run else "Updated"
+        print(f"{prefix} {record.name} -> {target}")
+    return 0
+
+
 def cmd_validate(args: argparse.Namespace) -> int:
     issues = validate_repository(_skills_root(args))
     if not issues:
@@ -96,6 +113,17 @@ def cmd_doctor(args: argparse.Namespace) -> int:
     issues = validate_repository(root)
     print(f"Validation issues: {len(issues)}")
     return 1 if issues else 0
+
+
+def cmd_catalog(args: argparse.Namespace) -> int:
+    write_catalog(
+        _skills_root(args),
+        Path(args.markdown).resolve(),
+        Path(args.json).resolve(),
+    )
+    print(f"Wrote {Path(args.markdown).resolve()}")
+    print(f"Wrote {Path(args.json).resolve()}")
+    return 0
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -122,10 +150,23 @@ def build_parser() -> argparse.ArgumentParser:
     remove.add_argument("--dry-run", action="store_true")
     remove.set_defaults(func=cmd_remove)
 
+    update = sub.add_parser("update", help="Update installer-managed skills without overwriting local edits")
+    update_selection = update.add_mutually_exclusive_group()
+    update_selection.add_argument("name", nargs="?")
+    update_selection.add_argument("--category")
+    update.add_argument("--destination", default=".agents/skills")
+    update.add_argument("--dry-run", action="store_true")
+    update.set_defaults(func=cmd_update)
+
     sub.add_parser("validate", help="Validate all source skills").set_defaults(func=cmd_validate)
     doctor = sub.add_parser("doctor", help="Check repository and install-path health")
     doctor.add_argument("--destination", default=".agents/skills")
     doctor.set_defaults(func=cmd_doctor)
+
+    catalog = sub.add_parser("catalog", help="Generate Markdown and JSON skill catalogs")
+    catalog.add_argument("--markdown", default="catalog/SKILLS.md")
+    catalog.add_argument("--json", default="catalog/skills.json")
+    catalog.set_defaults(func=cmd_catalog)
     return parser
 
 

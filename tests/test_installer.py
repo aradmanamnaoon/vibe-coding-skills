@@ -3,7 +3,7 @@ import tempfile
 import unittest
 
 from vibe_skills.catalog import SkillRecord
-from vibe_skills.installer import InstallError, install_skill, remove_skill
+from vibe_skills.installer import InstallError, install_skill, remove_skill, update_skill
 
 
 def _record(tmp_path: Path) -> SkillRecord:
@@ -55,6 +55,46 @@ class InstallerTests(unittest.TestCase):
             removed = remove_skill(record.name, destination)
             self.assertEqual(removed, target)
             self.assertFalse(target.exists())
+
+    def test_update_refuses_locally_modified_skill(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            destination = root / "installed"
+            record = _record(root)
+            target = install_skill(record, destination)
+            (target / "SKILL.md").write_text("local edit", encoding="utf-8")
+            with self.assertRaisesRegex(InstallError, "locally modified"):
+                update_skill(record, destination)
+            self.assertEqual((target / "SKILL.md").read_text(encoding="utf-8"), "local edit")
+
+    def test_update_replaces_unchanged_managed_skill(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            destination = root / "installed"
+            record = _record(root)
+            target = install_skill(record, destination)
+            (record.path / "SKILL.md").write_text("new source content", encoding="utf-8")
+            update_skill(record, destination)
+            self.assertEqual(
+                (target / "SKILL.md").read_text(encoding="utf-8"),
+                "new source content",
+            )
+
+    def test_path_traversal_name_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            destination = root / "installed"
+            source = root / "source" / "unsafe"
+            source.mkdir(parents=True)
+            (source / "SKILL.md").write_text("content", encoding="utf-8")
+            record = SkillRecord(
+                name="../escape",
+                description="A long enough description for traversal testing.",
+                category="testing",
+                path=source,
+            )
+            with self.assertRaisesRegex(InstallError, "unsafe skill destination"):
+                install_skill(record, destination, dry_run=True)
 
 
 if __name__ == "__main__":

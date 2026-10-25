@@ -48,6 +48,15 @@ class CatalogTests(unittest.TestCase):
         with self.assertRaisesRegex(SkillFormatError, "closing"):
             parse_front_matter("---\nname: test\n")
 
+    def test_duplicate_descriptions_are_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            description = "Detect the same representative issue with a reproducible workflow."
+            _write_skill(root, "testing", "first-skill", description)
+            _write_skill(root, "testing", "second-skill", description)
+            with self.assertRaisesRegex(SkillFormatError, "duplicate skill description"):
+                discover_skills(root)
+
 
 if __name__ == "__main__":
     unittest.main()

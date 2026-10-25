@@ -22,6 +22,7 @@ class ValidationTests(unittest.TestCase):
             )
             issues = validate_repository(root)
             self.assertTrue(any("When to activate" in issue.message for issue in issues))
+            self.assertTrue(any("Safety restrictions" in issue.message for issue in issues))
 
 
 if __name__ == "__main__":

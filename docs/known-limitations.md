@@ -1,6 +1,7 @@
 # Known limitations
 
-- Codex CLI was not available on the active Windows PATH, so native Codex skill installation and agent-driven behavioral tests were not executed.
+- Codex CLI 0.164.0 is installed from the official @openai/codex npm package and is callable, but the active host is not authenticated. Model-driven Codex behavioral tests were therefore not executed.
+- Codex plugin and MCP inventories plus codex doctor were inspected. Those observations do not establish model-driven MCP/plugin behavior while Codex authentication is absent.
 - The available host worker path did not provide a usable deterministic agent benchmark session. No failed startup is counted as validation.
 - PyPI DNS resolution failed while resolving optional development tools during this run. Core runtime and validation therefore remain standard-library only.
 - GitHub Search API rate limiting interrupted three configured issue searches. The curated evidence corpus records the limitation and does not infer prevalence from issue counts.

@@ -4,7 +4,7 @@ Checked against vendor documentation on 2026-10-25. Documented format support is
 
 | Environment | Documented support | Recommended project destination | Supporting files | Runtime test in this project | Notes |
 |---|---|---|---|---|---|
-| OpenAI Skills / agent surfaces | yes | environment-specific skill bundle or configured skill directory | yes | not executed with Codex CLI | Core format follows the open Agent Skills model documented by OpenAI. |
+| OpenAI Skills / agent surfaces | yes | environment-specific skill bundle or configured skill directory | yes | structural only; Codex CLI installed but unauthenticated | Core format follows the open Agent Skills model documented by OpenAI. |
 | Claude Code | yes | .claude/skills/<name>/ | yes | not executed | Requires copying each selected source bundle into Claude's discovery root. |
 | Cursor | yes | .agents/skills/<name>/ or .cursor/skills/<name>/ | yes | not executed | Cursor also documents compatibility discovery for Claude and Codex skill roots. |
 | GitHub Copilot | yes | .agents/skills/<name>/, .github/skills/<name>/, or .claude/skills/<name>/ depending on surface | yes | not executed | Copilot documents skills across cloud agent, code review, CLI, app, and IDE agent mode. |

@@ -2,7 +2,7 @@
 
 ## Current release scope
 
-The initial benchmark is deliberately limited to deterministic helper behavior and repository tooling. It does not report an agent-with-skill versus agent-without-skill improvement because no controlled compatible-agent harness was available on the active host.
+The initial benchmark is deliberately limited to deterministic helper behavior and repository tooling. It does not report an agent-with-skill versus agent-without-skill improvement because Codex CLI 0.164.0 is installed but unauthenticated on the active host, and no other controlled compatible-agent harness was available.
 
 ## Fixed fixture principles
 

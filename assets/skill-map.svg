@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">Vibe Coding Skills capability map</title>
+  <desc id="desc">A central Evidence First node connected to reliability, security, testing, debugging, frontend, backend, deployment, architecture, documentation, dependencies, efficiency, and release skills.</desc>
+  <rect width="1200" height="360" rx="24" fill="#0b1220"/>
+
+  <g stroke="#334155" stroke-width="2" fill="none">
+    <path d="M600 180L170 74"/>
+    <path d="M600 180L380 74"/>
+    <path d="M600 180L600 74"/>
+    <path d="M600 180L820 74"/>
+    <path d="M600 180L1030 74"/>
+    <path d="M600 180L170 286"/>
+    <path d="M600 180L380 286"/>
+    <path d="M600 180L600 286"/>
+    <path d="M600 180L820 286"/>
+    <path d="M600 180L1030 286"/>
+  </g>
+
+  <g font-family="Inter,Segoe UI,Arial,sans-serif" text-anchor="middle">
+    <rect x="472" y="140" width="256" height="80" rx="22" fill="#172554" stroke="#818cf8" stroke-width="2"/>
+    <text x="600" y="173" fill="#c7d2fe" font-size="18" font-weight="700">EVIDENCE FIRST</text>
+    <text x="600" y="198" fill="#94a3b8" font-size="13">trigger -> workflow -> validation</text>
+
+    <g fill="#111c2f" stroke-width="1.5">
+      <rect x="70" y="40" width="200" height="66" rx="16" stroke="#67e8f9"/>
+      <rect x="280" y="40" width="200" height="66" rx="16" stroke="#f472b6"/>
+      <rect x="500" y="40" width="200" height="66" rx="16" stroke="#a78bfa"/>
+      <rect x="720" y="40" width="200" height="66" rx="16" stroke="#fb923c"/>
+      <rect x="930" y="40" width="200" height="66" rx="16" stroke="#34d399"/>
+      <rect x="70" y="254" width="200" height="66" rx="16" stroke="#60a5fa"/>
+      <rect x="280" y="254" width="200" height="66" rx="16" stroke="#facc15"/>
+      <rect x="500" y="254" width="200" height="66" rx="16" stroke="#2dd4bf"/>
+      <rect x="720" y="254" width="200" height="66" rx="16" stroke="#c084fc"/>
+      <rect x="930" y="254" width="200" height="66" rx="16" stroke="#94a3b8"/>
+    </g>
+
+    <g fill="#e2e8f0" font-size="15" font-weight="600">
+      <text x="170" y="79">Agent reliability</text>
+      <text x="380" y="79">Security</text>
+      <text x="600" y="79">Testing</text>
+      <text x="820" y="79">Debugging</text>
+      <text x="1030" y="79">Frontend</text>
+      <text x="170" y="293">Backend</text>
+      <text x="380" y="293">Dependencies</text>
+      <text x="600" y="293">Deployment + release</text>
+      <text x="820" y="293">Architecture</text>
+      <text x="1030" y="293">Docs + efficiency</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">Vibe Coding Skills</title>
+  <desc id="desc">Evidence-backed Agent Skills for reliable AI-assisted software development. Forty-two skills, one hundred seventeen evidence rows, twenty-two tests, and cross-platform CI.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#08111f"/>
+      <stop offset="0.55" stop-color="#0f1f38"/>
+      <stop offset="1" stop-color="#122f45"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#67e8f9"/>
+      <stop offset="0.5" stop-color="#818cf8"/>
+      <stop offset="1" stop-color="#c084fc"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="420" rx="28" fill="url(#bg)"/>
+  <circle cx="1020" cy="72" r="150" fill="#22d3ee" opacity="0.08" filter="url(#glow)"/>
+  <circle cx="104" cy="372" r="170" fill="#8b5cf6" opacity="0.08" filter="url(#glow)"/>
+
+  <g transform="translate(72 60)">
+    <rect x="0" y="0" width="48" height="48" rx="12" fill="none" stroke="#67e8f9" stroke-width="2"/>
+    <path d="M12 25h8l5-11 6 21 5-10h10" fill="none" stroke="url(#accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <text x="72" y="31" fill="#e6f1ff" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="42" font-weight="700" letter-spacing="-1">Vibe Coding Skills</text>
+    <text x="0" y="96" fill="#a9bdd5" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="21">Evidence-backed Agent Skills for reliable AI-assisted software development</text>
+
+    <g transform="translate(0 140)">
+      <rect x="0" y="0" width="238" height="88" rx="16" fill="#ffffff" opacity="0.06" stroke="#67e8f9" stroke-opacity="0.28"/>
+      <text x="22" y="34" fill="#67e8f9" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="30" font-weight="700">42</text>
+      <text x="22" y="62" fill="#c9d8e8" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15">original skills</text>
+
+      <rect x="258" y="0" width="238" height="88" rx="16" fill="#ffffff" opacity="0.06" stroke="#818cf8" stroke-opacity="0.28"/>
+      <text x="280" y="34" fill="#a5b4fc" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="30" font-weight="700">117</text>
+      <text x="280" y="62" fill="#c9d8e8" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15">traceable evidence rows</text>
+
+      <rect x="516" y="0" width="238" height="88" rx="16" fill="#ffffff" opacity="0.06" stroke="#c084fc" stroke-opacity="0.28"/>
+      <text x="538" y="34" fill="#d8b4fe" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="30" font-weight="700">22</text>
+      <text x="538" y="62" fill="#c9d8e8" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15">local tests</text>
+
+      <rect x="774" y="0" width="238" height="88" rx="16" fill="#ffffff" opacity="0.06" stroke="#34d399" stroke-opacity="0.28"/>
+      <text x="796" y="34" fill="#6ee7b7" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="30" font-weight="700">6/6</text>
+      <text x="796" y="62" fill="#c9d8e8" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15">cross-platform CI jobs</text>
+    </g>
+
+    <g transform="translate(0 264)">
+      <text x="0" y="18" fill="#8fa6bf" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" letter-spacing="1.4">RESEARCH</text>
+      <path d="M88 13h96" stroke="#36506b" stroke-width="2"/>
+      <circle cx="194" cy="13" r="5" fill="#67e8f9"/>
+      <text x="216" y="18" fill="#8fa6bf" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" letter-spacing="1.4">SKILLS</text>
+      <path d="M277 13h96" stroke="#36506b" stroke-width="2"/>
+      <circle cx="383" cy="13" r="5" fill="#818cf8"/>
+      <text x="405" y="18" fill="#8fa6bf" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" letter-spacing="1.4">TESTS</text>
+      <path d="M455 13h96" stroke="#36506b" stroke-width="2"/>
+      <circle cx="561" cy="13" r="5" fill="#c084fc"/>
+      <text x="583" y="18" fill="#8fa6bf" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" letter-spacing="1.4">CI</text>
+      <path d="M606 13h96" stroke="#36506b" stroke-width="2"/>
+      <circle cx="712" cy="13" r="5" fill="#34d399"/>
+      <text x="734" y="18" fill="#d7e4f2" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" letter-spacing="1.4">SHIP WITH EVIDENCE</text>
+    </g>
+  </g>
+</svg>

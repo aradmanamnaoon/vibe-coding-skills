@@ -10,7 +10,7 @@ Generated from catalog/skills.json and the observed validation strategy on 2026-
 - Agent-driven behavioral tests: **0**
 - Skills without agent-level execution evidence: **42**
 
-The active build environment did not expose a compatible deterministic agent harness for controlled skill-versus-control runs. That limitation is recorded rather than converted into inferred agent-test results.
+Codex CLI 0.164.0 is installed on the active host, but the host is not authenticated for model-driven Codex execution and did not expose another suitable deterministic agent harness for controlled skill-versus-control runs. That limitation is recorded rather than converted into inferred agent-test results.
 
 ## Per-skill status
 

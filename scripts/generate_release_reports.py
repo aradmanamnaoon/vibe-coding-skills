@@ -33,7 +33,7 @@ def write_validation_report(rows: list[dict[str, object]]) -> None:
         "- Agent-driven behavioral tests: **0**",
         f"- Skills without agent-level execution evidence: **{total}**",
         "",
-        "The active build environment did not expose a compatible deterministic agent harness for controlled skill-versus-control runs. That limitation is recorded rather than converted into inferred agent-test results.",
+        "Codex CLI 0.164.0 is installed on the active host, but the host is not authenticated for model-driven Codex execution and did not expose another suitable deterministic agent harness for controlled skill-versus-control runs. That limitation is recorded rather than converted into inferred agent-test results.",
         "",
         "## Per-skill status",
         "",
@@ -68,7 +68,7 @@ Checked against vendor documentation on 2026-10-25. Documented format support is
 
 | Environment | Documented support | Recommended project destination | Supporting files | Runtime test in this project | Notes |
 |---|---|---|---|---|---|
-| OpenAI Skills / agent surfaces | yes | environment-specific skill bundle or configured skill directory | yes | not executed with Codex CLI | Core format follows the open Agent Skills model documented by OpenAI. |
+| OpenAI Skills / agent surfaces | yes | environment-specific skill bundle or configured skill directory | yes | structural only; Codex CLI installed but unauthenticated | Core format follows the open Agent Skills model documented by OpenAI. |
 | Claude Code | yes | .claude/skills/<name>/ | yes | not executed | Requires copying each selected source bundle into Claude's discovery root. |
 | Cursor | yes | .agents/skills/<name>/ or .cursor/skills/<name>/ | yes | not executed | Cursor also documents compatibility discovery for Claude and Codex skill roots. |
 | GitHub Copilot | yes | .agents/skills/<name>/, .github/skills/<name>/, or .claude/skills/<name>/ depending on surface | yes | not executed | Copilot documents skills across cloud agent, code review, CLI, app, and IDE agent mode. |
@@ -94,7 +94,7 @@ def write_benchmark_methodology() -> None:
 
 ## Current release scope
 
-The initial benchmark is deliberately limited to deterministic helper behavior and repository tooling. It does not report an agent-with-skill versus agent-without-skill improvement because no controlled compatible-agent harness was available on the active host.
+The initial benchmark is deliberately limited to deterministic helper behavior and repository tooling. It does not report an agent-with-skill versus agent-without-skill improvement because Codex CLI 0.164.0 is installed but unauthenticated on the active host, and no other controlled compatible-agent harness was available.
 
 ## Fixed fixture principles
 
@@ -122,7 +122,8 @@ An agent benchmark must pin the repository snapshot, model/configuration, prompt
 def write_known_limitations() -> None:
     text = """# Known limitations
 
-- Codex CLI was not available on the active Windows PATH, so native Codex skill installation and agent-driven behavioral tests were not executed.
+- Codex CLI 0.164.0 is installed from the official @openai/codex npm package and is callable, but the active host is not authenticated. Model-driven Codex behavioral tests were therefore not executed.
+- Codex plugin and MCP inventories plus codex doctor were inspected. Those observations do not establish model-driven MCP/plugin behavior while Codex authentication is absent.
 - The available host worker path did not provide a usable deterministic agent benchmark session. No failed startup is counted as validation.
 - PyPI DNS resolution failed while resolving optional development tools during this run. Core runtime and validation therefore remain standard-library only.
 - GitHub Search API rate limiting interrupted three configured issue searches. The curated evidence corpus records the limitation and does not infer prevalence from issue counts.

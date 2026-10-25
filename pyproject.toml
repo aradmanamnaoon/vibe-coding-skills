@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vibe-coding-skills"
+version = "0.1.0"
+description = "Evidence-driven Agent Skills and deterministic tooling for safer AI-assisted software development."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+  {name = "Seyyed Arad Hosseini Moghaddam"}
+]
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/aradmanamnaoon/vibe-coding-skills"
+
+[project.scripts]
+vibe-skills = "vibe_skills.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+

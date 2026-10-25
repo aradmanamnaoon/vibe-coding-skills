@@ -36,4 +36,3 @@ This audit compares the implemented repository to the project master prompt. A r
 The repository is publishable and its implemented capabilities are validated to the levels reported above. Two master-prompt ambitions remain environment-limited rather than falsely checked off: installation/execution of third-party skills in Codex, and controlled agent-with-skill versus agent-without-skill behavioral benchmarks.
 
 Those limitations are carried into `docs/known-limitations.md`, `docs/validation-report.md`, and `docs/benchmark-results.md` so the public README does not imply evidence that does not exist.
-
